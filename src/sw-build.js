@@ -1,4 +1,4 @@
-const workboxBuild = require("workbox-build");
+import workboxBuild from "workbox-build";
 
 const buildSW = () => {
   // The build is expected to fail if the 
