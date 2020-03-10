@@ -16,7 +16,8 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.1.3",
-    "reduxsauce": "^1.1.2"
+    "reduxsauce": "^1.1.2",
+    "workbox-build": "^5.0.0"
   },
   "scripts": {
     "lint": "eslint src -c .eslintrc --ext js,jsx",
@@ -24,7 +25,9 @@
     "husky:pre-push": "npm run lint ",
     "start": " react-scripts start",
     "story": "start-storybook -p 9001 -c .storybook",
-    "build": "react-scripts build",
+    "build-sw": "node ./src/sw-build.js",
+    "clean-cra-sw": "rm -f build/precache-manifest.*.js && rm -f build/service-worker.js",
+    "build": "react-scripts build && npm run build-sw && npm run clean-cra-sw",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
