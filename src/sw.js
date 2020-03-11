@@ -78,7 +78,6 @@ if ("function" === typeof importScripts) {
   importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
   
   if (workbox) {
-    workbox.core.setLogLevel(workbox.core.LOG_LEVELS.debug);
     workbox.setConfig({ debug: true });
   console.log(`Yay! Workbox is loaded 🎉`);
   // workbox.core.skipWaiting();
