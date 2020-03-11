@@ -6,7 +6,7 @@ const buildSW = () => {
     swDest: 'build/sw.js',
     globDirectory: 'build',
     globPatterns: [
-      '**\/*.{js,css,html,png}',
+      '**\/*.{js,css,html,png,jpg}',
     ]
   }).then(({count, size, warnings}) => {
     warnings.forEach(console.warn);
