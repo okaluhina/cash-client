@@ -105,14 +105,14 @@ if ("function" === typeof importScripts) {
 
   workbox.routing.registerRoute(
     new RegExp('.*\.js'),
-    workbox.strategies.NetworkFirst()
+    new workbox.strategies.NetworkFirst()
   );
 
   workbox.routing.registerRoute(
     // Cache CSS files
     /.*\.css/,
     // Use cache but update in the background ASAP
-    workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.StaleWhileRevalidate({
       // Use a custom cache name
       cacheName: 'css-cache',
     })
@@ -122,7 +122,7 @@ if ("function" === typeof importScripts) {
     // Cache image files
     /.*\.(?:png|jpg|jpeg|svg|gif)/,
     // Use the cache if it's available
-    workbox.strategies.CacheFirst({
+    new workbox.strategies.CacheFirst({
       // Use a custom cache name
       cacheName: 'image-cache',
       plugins: [
@@ -174,7 +174,7 @@ if ("function" === typeof importScripts) {
 
     new RegExp('https://frozen-lowlands-43041.herokuapp.com/main'),
 
-    workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.StaleWhileRevalidate({
 
         cacheName: 'My-awesome-cache-news-headline',
 
