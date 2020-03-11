@@ -79,9 +79,10 @@ if ("function" === typeof importScripts) {
   
   if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
-  workbox.core.skipWaiting();
-  console.log('==============self.__WB_MANIFEST=================')
-  // console.log(self.__WB_MANIFEST)
+  self.addEventListener("install", event => {
+           self.skipWaiting();
+           window.location.reload();
+         });
 
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST); // URLs to precache injected by workbox build
   // workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
