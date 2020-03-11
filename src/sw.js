@@ -105,14 +105,14 @@ if ("function" === typeof importScripts) {
 
   workbox.routing.registerRoute(
     new RegExp('.*\.js'),
-    workbox.strategies.networkFirst()
+    workbox.strategies.NetworkFirst()
   );
 
   workbox.routing.registerRoute(
     // Cache CSS files
     /.*\.css/,
     // Use cache but update in the background ASAP
-    workbox.strategies.staleWhileRevalidate({
+    workbox.strategies.StaleWhileRevalidate({
       // Use a custom cache name
       cacheName: 'css-cache',
     })
@@ -122,7 +122,7 @@ if ("function" === typeof importScripts) {
     // Cache image files
     /.*\.(?:png|jpg|jpeg|svg|gif)/,
     // Use the cache if it's available
-    workbox.strategies.cacheFirst({
+    workbox.strategies.CacheFirst({
       // Use a custom cache name
       cacheName: 'image-cache',
       plugins: [
@@ -169,11 +169,12 @@ if ("function" === typeof importScripts) {
   
   // });
 
+  // TODO: use network first???
   workbox.routing.registerRoute(
 
     new RegExp('https://frozen-lowlands-43041.herokuapp.com/main'),
 
-    workbox.strategies.staleWhileRevalidate({
+    workbox.strategies.StaleWhileRevalidate({
 
         cacheName: 'My-awesome-cache-news-headline',
 
