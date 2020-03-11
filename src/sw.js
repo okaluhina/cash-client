@@ -174,7 +174,7 @@ if ("function" === typeof importScripts) {
 
     new RegExp('https://frozen-lowlands-43041.herokuapp.com/main'),
 
-    new workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.NetworkFirst({
 
         cacheName: 'My-awesome-cache-news-headline',
 
