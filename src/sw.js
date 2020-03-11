@@ -80,8 +80,13 @@ if ("function" === typeof importScripts) {
   if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
   workbox.core.skipWaiting();
+  console.log('==============self.__WB_MANIFEST=================')
+  console.log(self.__WB_MANIFEST)
+
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST); // URLs to precache injected by workbox build
   // workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
+  // TODO cash any js file
+  // workbox.routing.registerRoute(/\.js$/, new workbox.strategies.NetworkFirst())
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
