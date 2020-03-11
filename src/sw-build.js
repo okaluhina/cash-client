@@ -1,4 +1,5 @@
 const workboxBuild = require('workbox-build');
+// TODo add al statics to  globPatterns 
 
 const buildSW = () => {
   return workboxBuild.injectManifest({

@@ -78,16 +78,115 @@ if ("function" === typeof importScripts) {
   importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
   
   if (workbox) {
+    workbox.core.setLogLevel(workbox.core.LOG_LEVELS.debug);
+    workbox.setConfig({ debug: true });
   console.log(`Yay! Workbox is loaded 🎉`);
+  // workbox.core.skipWaiting();
   self.addEventListener("install", event => {
-           self.skipWaiting();
-           window.location.reload();
-         });
-
+          self.skipWaiting();
+        });
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST); // URLs to precache injected by workbox build
   // workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
   // TODO cash any js file
   // workbox.routing.registerRoute(/\.js$/, new workbox.strategies.NetworkFirst())
+  // TODO: add routing to handle push notifivations
+  // workbox.routing.registerRoute(
+  //   'https://some-other-origin.com/logo.png',
+  //   handler
+  // );
+  // workbox.routing.registerRoute(
+  //   new RegExp('\\.js$'),
+  //   jsHandler
+  // );
+  
+  // workbox.routing.registerRoute(
+  //   new RegExp('\\.css$'),
+  //   cssHandler
+  // );
+
+  workbox.routing.registerRoute(
+    new RegExp('.*\.js'),
+    workbox.strategies.networkFirst()
+  );
+
+  workbox.routing.registerRoute(
+    // Cache CSS files
+    /.*\.css/,
+    // Use cache but update in the background ASAP
+    workbox.strategies.staleWhileRevalidate({
+      // Use a custom cache name
+      cacheName: 'css-cache',
+    })
+  );
+
+  workbox.routing.registerRoute(
+    // Cache image files
+    /.*\.(?:png|jpg|jpeg|svg|gif)/,
+    // Use the cache if it's available
+    workbox.strategies.cacheFirst({
+      // Use a custom cache name
+      cacheName: 'image-cache',
+      plugins: [
+        new workbox.expiration.Plugin({
+          // Cache only 30 images
+          maxEntries: 30,
+          // Cache for a maximum of a week
+          maxAgeSeconds: 7 * 24 * 60 * 60,
+        })
+      ],
+    })
+  );
+
+  // const matchCb = ({url, event}) => {
+  //   return (url.pathname === '/workbox-pwa/');
+  // };
+
+  // workbox.routing.registerRoute(matchCb, workbox.strategies.networkFirst());
+
+
+  // self.addEventListener('fetch', event => {
+
+  //   event.respondWith(
+  
+  //     caches.put('my-awesome-cache').then(cache => {
+  
+  //       return catch.match(event.request).then(cacheResponse => {
+  
+  //         const fetchPromise = fetch(event.request).then(networkResponse => {
+  
+  //           catch.put(event.request, networkResponse.clone());
+  
+  //           return networkResponse;
+  
+  //         });
+  
+  //         return cacheResponse || fetchPromise;
+  
+  //       });
+  
+  //     });
+  
+  //   );
+  
+  // });
+
+  workbox.routing.registerRoute(
+
+    new RegExp('https://frozen-lowlands-43041.herokuapp.com/main'),
+
+    workbox.strategies.staleWhileRevalidate({
+
+        cacheName: 'My-awesome-cache-news-headline',
+
+        cacheExpiration: {
+
+            maxAgeSeconds: 60 * 30 //cache the news content for 30mn
+
+        }
+
+    })
+
+);
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
