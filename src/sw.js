@@ -81,7 +81,7 @@ if ("function" === typeof importScripts) {
   console.log(`Yay! Workbox is loaded 🎉`);
   workbox.core.skipWaiting();
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST); // URLs to precache injected by workbox build
-  workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
+  // workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
