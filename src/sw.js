@@ -72,5 +72,30 @@
 //     console.error("Workbox could not be loaded. No offline support.");
 //   }
 // }
+console.log('try to run precash')
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
-console.log('================================Custom service worker !!!!===================================')
+if (workbox) {
+  console.log(`Yay! Workbox is loaded 🎉`);
+  workbox.core.skipWaiting();
+  workbox.precaching.precacheAndRoute([self.__WB_MANIFEST]); // URLs to precache injected by workbox build
+  workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
+} else {
+  console.log(`Boo! Workbox didn't load 😬`);
+}
+
+// console.log('================================Custom service worker !!!!===================================')
+
+// workbox.precaching.precacheAndRoute([]);
+
+// console.log('================================Custom service worker !!!!===================================')
+
+// if ("function" === typeof importScripts) {
+//     console.log('custom sw is running')
+  
+//   importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.5.0/workbox-sw.js");
+//   if (workbox) {
+//     console.log("Workbox is loaded");
+//     console.log(workbox)
+//   }
+// }
