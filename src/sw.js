@@ -109,6 +109,11 @@ if ("function" === typeof importScripts) {
   );
 
   workbox.routing.registerRoute(
+    new RegExp('second'),
+    new workbox.strategies.NetworkFirst()
+  );
+
+  workbox.routing.registerRoute(
     // Cache CSS files
     /.*\.css/,
     // Use cache but update in the background ASAP
