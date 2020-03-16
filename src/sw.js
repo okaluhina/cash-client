@@ -243,3 +243,113 @@ if (true) {
 //     console.log(workbox)
 //   }
 // }
+
+
+
+// TODO: real 
+
+
+// /* eslint-disable */
+// if (typeof importScripts === 'function') {
+//   importScripts(
+//     'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js'
+//   );
+
+//   if (workbox) {
+//     workbox.setConfig({ debug: true });
+
+//     self.addEventListener('install', event => {
+//       self.skipWaiting();
+//     });
+
+//     workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+
+//     workbox.routing.registerRoute(
+//       new RegExp('.*.js'),
+//       new workbox.strategies.NetworkFirst()
+//     );
+
+//     workbox.routing.registerRoute(
+//       /.*\.css/,
+//       new workbox.strategies.StaleWhileRevalidate({
+//         cacheName: 'css-cache',
+//       })
+//     );
+
+//     workbox.routing.registerRoute(
+//       /.*\.(?:png|jpg|jpeg|svg|gif)/,
+//       new workbox.strategies.CacheFirst({
+//         cacheName: 'image-cache',
+//         plugins: [
+//           new workbox.expiration.Plugin({
+//             maxEntries: 100,
+//             // Cache for a maximum of a week
+//             maxAgeSeconds: 7 * 24 * 60 * 60,
+//           }),
+//         ],
+//       })
+//     );
+
+//     workbox.routing.registerRoute(
+//       /.*\.(?:ttf|otf)/,
+//       new workbox.strategies.CacheFirst({
+//         cacheName: 'fonts-cache',
+//         plugins: [
+//           new workbox.expiration.Plugin({
+//             maxEntries: 20,
+//             // Cache for a maximum of a week
+//             maxAgeSeconds: 7 * 24 * 60 * 60,
+//           }),
+//         ],
+//       })
+//     );
+
+//     workbox.routing.registerRoute(
+//       // TODO: check if post request
+//       new RegExp(`${process.env.REACT_APP_API_URI}/auth`),
+
+//       new workbox.strategies.NetworkOnly()
+//     );
+
+//     // TODO: exclude login path /auth
+//     workbox.routing.registerRoute(
+//       new RegExp(`${process.env.REACT_APP_API_URI}.*`),
+
+//       new workbox.strategies.NetworkFirst({
+//         cacheName: 'api-get-static-info-requests-cache',
+
+//         cacheExpiration: {
+//           maxAgeSeconds: 60 * 30, // cache the content for 30mn
+//         },
+//         // TODO: add to customise befavour
+//         // plugins: []
+//       })
+//     );
+
+//     // TODO: add like
+//     const match = ({ url, event }) => {
+//       return {
+//         name: 'Workbox',
+//         type: 'guide',
+//       };
+//     };
+
+//     const handler = async ({ url, event, params }) => {
+//       // Response will be "A guide to Workbox"
+//       return new Response(`A ${params.type} to ${params.name}`);
+//     };
+
+//     // TODO add purgeOnQuotaError: true,
+
+//     // TODO estimate storage
+//     // if ('storage' in navigator && 'estimate' in navigator.storage) {
+//     //   navigator.storage.estimate().then(({usage, quota}) => {
+//     //     console.log(`Using ${usage} out of ${quota} bytes.`);
+//     //   });
+//     // }
+
+//     workbox.routing.registerRoute(match, handler);
+//   } else {
+//     console.log(`Workbox didn't load`);
+//   }
+// }
