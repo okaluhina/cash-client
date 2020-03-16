@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, withRouter } from 'react-router-dom';
 import MainPage from 'containers/MainPage.container';
+import SecondPage from 'containers/SecondPage.container';
 import PrivateRoute from 'services/HOCs/privateRoute';
 import ScrollToTop from 'services/HOCs/ScrollToTop';
 
@@ -12,6 +13,7 @@ const App = () => {
       <ScrollToTop>
         <Switch>
           <PrivateRoute allow path="/" exact component={MainPage} />
+          <PrivateRoute allow path="/second" exact component={SecondPage} />
         </Switch>
       </ScrollToTop>
     </React.StrictMode>

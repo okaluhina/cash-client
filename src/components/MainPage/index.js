@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import history from 'store/history';
 import CatImg from 'assets/background-images/cats_sneeze.jpg';
 import styles from './style.module.css';
 
@@ -19,6 +20,8 @@ const MainPage = ({ loadInfo, info }) => {
             </div>
           ))
         : 'no info'}
+
+        <button onClick={() => history.push('/second')}> go on second page</button>
     </div>
   );
 };

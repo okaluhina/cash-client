@@ -1,5 +1,6 @@
 const workboxBuild = require('workbox-build');
 // TODo add al statics to  globPatterns 
+// TODO: add logger to catch 
 
 const buildSW = () => {
   return workboxBuild.injectManifest({
