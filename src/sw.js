@@ -87,7 +87,9 @@ if ("function" === typeof importScripts) {
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST); // URLs to precache injected by workbox build
   
 
-  const navHandler = workbox.precaching.PrecacheController.createHandlerBoundToURL('/index.html')
+  const aaa = new workbox.precaching.PrecacheController
+
+  const navHandler = aaa.createHandlerBoundToURL('/index.html')
   const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
   workbox.routing.registerRoute(navigationRoute)
   
