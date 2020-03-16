@@ -88,6 +88,13 @@ if ("function" === typeof importScripts) {
   
 
   console.log('===================1================')
+
+  console.log('workbox.precaching')
+  console.log(workbox.precaching)
+
+  console.log('workbox.precaching.PrecacheController')
+  console.log(workbox.precaching.PrecacheController)
+
   const aaa = new workbox.precaching.PrecacheController
 
   console.log('===================PrecacheController================')
