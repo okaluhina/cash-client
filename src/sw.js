@@ -196,7 +196,7 @@ if ("function" === typeof importScripts) {
 
 const navHandler = workbox.precaching.createHandlerBoundToURL('/index.html')
 
-const navigationRoute = new workbox.routing.NavigationRoute(handler);
+const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
 
 workbox.routing.registerRoute(navigationRoute )
 } else {
