@@ -85,6 +85,12 @@ if ("function" === typeof importScripts) {
           self.skipWaiting();
         });
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST); // URLs to precache injected by workbox build
+  
+
+  const navHandler = workbox.precaching.PrecacheController.createHandlerBoundToURL('/index.html')
+  const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
+  workbox.routing.registerRoute(navigationRoute)
+  
   // workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
   // TODO cash any js file
   // workbox.routing.registerRoute(/\.js$/, new workbox.strategies.NetworkFirst())
@@ -194,11 +200,7 @@ if ("function" === typeof importScripts) {
 
 );
 
-const navHandler = workbox.createHandlerBoundToURL('/index.html')
 
-const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
-
-workbox.routing.registerRoute(navigationRoute )
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
