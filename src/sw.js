@@ -1,4 +1,3 @@
-import {createHandlerBoundToURL} from 'workbox-precaching';
 // if ("function" === typeof importScripts) {
 
 //   console.log('custom sw is running')
@@ -75,6 +74,7 @@ import {createHandlerBoundToURL} from 'workbox-precaching';
 // }
 console.log('try to run precash')
 // if ("function" === typeof importScripts)
+// workbox.precaching.getCacheKeyForURL("index.html")
 if (true) {
   importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
   
@@ -93,18 +93,26 @@ if (true) {
 
   // console.log('===================1================')
 
-  // console.log('workbox.precaching')
-  // console.log(workbox.precaching)
+  console.log('workbox.routing')
+  console.log(workbox.routing)
+  console.log('workbox.precaching')
+  console.log(workbox.precaching)
+
+
+
+  workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("index.html"));
+
+
 
   // console.log('workbox.precaching.PrecacheController')
-  // console.log(new workbox.precaching.PrecacheController)
+  // console.log(new workbox.precaching.PrecacheController.createHandlerBoundToURL)
 
 
 
 
-  const navHandler  = createHandlerBoundToURL('/index.html')
-  const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
-  workbox.routing.registerRoute(navigationRoute)
+  // const navHandler  = createHandlerBoundToURL('/index.html')
+  // const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
+  // workbox.routing.registerRoute(navigationRoute)
   
   // workbox.routing.registerRoute(new RegExp('.*.*'), new workbox.strategies.staleWhileRevalidate());
   // TODO cash any js file
