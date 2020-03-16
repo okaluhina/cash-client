@@ -20,11 +20,7 @@ const App = () => {
   );
 };
 
-App.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
-  requestNotifications: PropTypes.func.isRequired,
-  receiveNotifications: PropTypes.func.isRequired,
-};
+App.propTypes = {};
 
 const mapStateToProps = state => ({});
 

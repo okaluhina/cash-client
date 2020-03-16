@@ -76,7 +76,7 @@ console.log('try to run precash')
 // if ("function" === typeof importScripts)
 // workbox.precaching.getCacheKeyForURL("index.html")
 if (true) {
-  importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
+  importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js');
   
   console.log('workbox')
   console.log(workbox)
