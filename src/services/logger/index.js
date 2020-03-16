@@ -9,15 +9,15 @@ log4js.configure({
       backups: 25,
       compress: true,
       encoding: 'utf-8',
-      mode: 0o0640
+      mode: 0o0640,
     },
     out: {
-      type: 'stdout'
-    }
+      type: 'stdout',
+    },
   },
   categories: {
-    default: { appenders: ['file', 'out'], level: 'trace' }
-  }
+    default: { appenders: ['file', 'out'], level: 'trace' },
+  },
 });
 
 const logger = log4js.getLogger('api');

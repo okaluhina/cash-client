@@ -4,7 +4,14 @@ import actions from './actions';
 
 const {
   Types: { LOAD_INFO_REQUEST, LOAD_SECOND_REQUEST, SAVE_SECOND_REQUEST },
-  Creators: { loadInfoSuccess, loadInfoFailure, loadSecondSuccess, loadSecondFailure, saveSecondSuccess, saveSecondFailure },
+  Creators: {
+    loadInfoSuccess,
+    loadInfoFailure,
+    loadSecondSuccess,
+    loadSecondFailure,
+    saveSecondSuccess,
+    saveSecondFailure,
+  },
 } = actions;
 
 function* loadInfo() {
@@ -27,12 +34,12 @@ function* loadSecond() {
   }
 }
 
-function* saveSecond({payload}) {
+function* saveSecond({ payload }) {
   try {
-    console.log('payload')
-    console.log(payload)
+    console.log('payload');
+    console.log(payload);
 
-    const { data } = yield call(api.post, 'second', {second : payload});
+    const { data } = yield call(api.post, 'second', { second: payload });
 
     yield put(saveSecondSuccess(data.second));
   } catch (error) {

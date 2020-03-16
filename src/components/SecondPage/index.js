@@ -1,11 +1,12 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import history from 'store/history'
+import history from 'store/history';
 
 import styles from './style.module.css';
 
 const SecondPage = ({ loadSecond, saveSecond, second }) => {
-  const [secondText, setSecondText] = useState('')
+  const [secondText, setSecondText] = useState('');
 
   useEffect(() => {
     loadSecond();
@@ -13,13 +14,15 @@ const SecondPage = ({ loadSecond, saveSecond, second }) => {
 
   return (
     <div className={styles.wrapper}>
-     <label>we got info from second api</label>
-     <p>{second ? second : 'no info'}</p>
-     <input value={secondText} onChange={e => setSecondText(e.currentTarget.value)} />
-     <button type='button' onClick={() => saveSecond(secondText)}>save</button>
-     
-     <br />
-    <button onClick={() => history.push('/')}>go to main</button>
+      <label>we got info from second api</label>
+      <p>{second || 'no info'}</p>
+      <input value={secondText} onChange={e => setSecondText(e.currentTarget.value)} />
+      <button type="button" onClick={() => saveSecond(secondText)}>
+        save
+      </button>
+
+      <br />
+      <button type='button' onClick={() => history.push('/')}>go to main</button>
     </div>
   );
 };
@@ -27,11 +30,11 @@ const SecondPage = ({ loadSecond, saveSecond, second }) => {
 SecondPage.propTypes = {
   loadSecond: PropTypes.func.isRequired,
   saveSecond: PropTypes.func.isRequired,
-  second: PropTypes.string 
+  second: PropTypes.string,
 };
 
 SecondPage.defaultProps = {
-  second: ''
+  second: '',
 };
 
 export default SecondPage;

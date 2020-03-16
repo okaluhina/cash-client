@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import history from 'store/history';
@@ -21,7 +22,7 @@ const MainPage = ({ loadInfo, info }) => {
           ))
         : 'no info'}
 
-        <button onClick={() => history.push('/second')}> go on second page</button>
+      <button onClick={() => history.push('/second')}> go on second page</button>
     </div>
   );
 };

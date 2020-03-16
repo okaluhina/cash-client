@@ -30,8 +30,6 @@ const loadInfoFailure = (state = INITIAL_STATE, { error }) => {
   };
 };
 
-
-
 const loadSecondRequest = (state = INITIAL_STATE) => {
   return {
     ...state,
@@ -54,8 +52,7 @@ const loadSecondFailure = (state = INITIAL_STATE, { error }) => {
   };
 };
 
-
-const saveSecondRequest = (state = INITIAL_STATE, {payload}) => {
+const saveSecondRequest = (state = INITIAL_STATE, { payload }) => {
   return {
     ...state,
     error: null,
@@ -76,8 +73,6 @@ const saveSecondFailure = (state = INITIAL_STATE, { error }) => {
     error,
   };
 };
-
-
 
 export const HANDLERS = {
   [Types.LOAD_INFO_REQUEST]: loadInfoRequest,
