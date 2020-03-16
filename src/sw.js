@@ -108,10 +108,11 @@ if ("function" === typeof importScripts) {
     new workbox.strategies.NetworkFirst()
   );
 
-  workbox.routing.registerRoute(
-    new RegExp('second'),
-    new workbox.strategies.NetworkFirst()
-  );
+  // // TODO: cash all routes in bad desision
+  // workbox.routing.registerRoute(
+  //   new RegExp('second'),
+  //   new workbox.strategies.NetworkFirst()
+  // );
 
   workbox.routing.registerRoute(
     // Cache CSS files
@@ -192,6 +193,12 @@ if ("function" === typeof importScripts) {
     })
 
 );
+
+const navHandler = workbox.precaching.createHandlerBoundToURL('/index.html')
+
+const navigationRoute = new workbox.routing.NavigationRoute(handler);
+
+workbox.routing.registerRoute(navigationRoute )
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
