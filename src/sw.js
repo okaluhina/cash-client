@@ -73,10 +73,13 @@
 //   }
 // }
 console.log('try to run precash')
-// 
-if ("function" === typeof importScripts) {
+// if ("function" === typeof importScripts)
+if (true) {
   importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
   
+  console.log('workbox')
+  console.log(workbox)
+
   if (workbox) {
     workbox.setConfig({ debug: true });
   console.log(`Yay! Workbox is loaded 🎉`);
@@ -95,14 +98,10 @@ if ("function" === typeof importScripts) {
   console.log('workbox.precaching.PrecacheController')
   console.log(workbox.precaching.PrecacheController)
 
-  const aaa = new workbox.precaching.PrecacheController
-
-  console.log('===================PrecacheController================')
-  console.log(aaa)
 
 
 
-  const navHandler  = aaa.createHandlerBoundToURL('/index.html')
+  const navHandler  = workbox.precaching.PrecacheController.createHandlerBoundToURL('/index.html')
   const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
   workbox.routing.registerRoute(navigationRoute)
   
