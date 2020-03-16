@@ -1,3 +1,4 @@
+import {createHandlerBoundToURL} from 'workbox-precaching';
 // if ("function" === typeof importScripts) {
 
 //   console.log('custom sw is running')
@@ -90,18 +91,18 @@ if (true) {
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST); // URLs to precache injected by workbox build
   
 
-  console.log('===================1================')
+  // console.log('===================1================')
 
-  console.log('workbox.precaching')
-  console.log(workbox.precaching)
+  // console.log('workbox.precaching')
+  // console.log(workbox.precaching)
 
-  console.log('workbox.precaching.PrecacheController')
-  console.log(workbox.precaching.PrecacheController)
-
-
+  // console.log('workbox.precaching.PrecacheController')
+  // console.log(new workbox.precaching.PrecacheController)
 
 
-  const navHandler  = workbox.precaching.PrecacheController.createHandlerBoundToURL('/index.html')
+
+
+  const navHandler  = createHandlerBoundToURL('/index.html')
   const navigationRoute = new workbox.routing.NavigationRoute(navHandler);
   workbox.routing.registerRoute(navigationRoute)
   
