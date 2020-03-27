@@ -15,14 +15,14 @@ self.addEventListener("install", event => {
 
 // registerRoute('/second', handler);
 
-function storageEstimateWrapper() {
-  if ('storage' in navigator && 'estimate' in navigator.storage) {
-    // We've got the real thing! Return its response.
-    return navigator.storage.estimate();
-  }
-}
+// function storageEstimateWrapper() {
+//   if ('storage' in navigator && 'estimate' in navigator.storage) {
+//     // We've got the real thing! Return its response.
+//     return navigator.storage.estimate();
+//   }
+// }
 
-  storageEstimateWrapper().then(est => console.log(est))
+//   storageEstimateWrapper().then(est => console.log(est))
 
 
 // workbox.routing.registerRoute(
